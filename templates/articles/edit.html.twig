@@ -1,0 +1,82 @@
+
+{# templates/articles/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Liste des Articles
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .card-body {
+            background-color: transparent; /* Set background color of card body to transparent */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<body>
+    {{ include('inc/navbar.html.twig') }} 
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
+        <div class="container">
+            <a href="/" class="navbar-brand">Nadhem BelHadj</a> 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav"> 
+                <span class="navbar-toggle-icon"></span> 
+            </button> 
+            <div class="collapse navbar-collapse" id="mobile-nav"> 
+                <ul class="navbar-nav ml-auto"> 
+                    <li class="nav-item"> <a href="/" class="nav-link">Home</a> </li> 
+                    <li class="nav-item"> <a href="{{ path('new_article') }}" class="nav-link">Ajouter article</a> </li>
+                    <li class="nav-item"> <a href="{{ path('new_category')}}" class="nav-link">Ajouter catégorie</a> </li>
+                </ul> 
+            </div> 
+        </div> 
+    </nav>
+
+
+
+
+
+
+
+<body>
+    {{ include('inc/navbar.html.twig') }} 
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="card-title text-center mb-0">Modifier l'article</h2>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form, {'attr': {'class': 'row g-3'}}) }}
+                        
+                        <div class="form-group col-md-12">
+                            {{ form_label(form.nom, 'Nom de l\'article', {'label_attr': {'class': 'font-weight-bold'}}) }}
+                            {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom de l\'article'}}) }}
+                        </div>
+                        
+                        <div class="form-group col-md-6">
+                            {{ form_label(form.prix, 'Prix de l\'article', {'label_attr': {'class': 'font-weight-bold'}}) }}
+                            {{ form_widget(form.prix, {'attr': {'class': 'form-control', 'placeholder': 'Prix de l\'article'}}) }}
+                        </div>
+                        
+                        <div class="form-group col-md-6">
+                            {{ form_label(form.category, 'Catégorie', {'label_attr': {'class': 'font-weight-bold'}}) }}
+                            {{ form_widget(form.category, {'attr': {'class': 'form-control', 'placeholder': 'Catégorie'}}) }}
+                        </div>
+                        
+                        <div class="form-group col-md-12">
+                            <button type="submit" class="btn btn-primary btn-block">Modifier</button>
+                        </div>
+                        
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

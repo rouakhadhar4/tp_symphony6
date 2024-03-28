@@ -1,0 +1,65 @@
+
+{# templates/articles/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Liste des Articles
+{% endblock %}
+
+{% block stylesheets %}
+   
+{% endblock %}
+
+{% block body %}
+<body>
+    {{ include('inc/navbar.html.twig') }} 
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
+        <div class="container">
+            <a href="/" class="navbar-brand">Nadhem BelHadj</a> 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav"> 
+                <span class="navbar-toggle-icon"></span> 
+            </button> 
+            <div class="collapse navbar-collapse" id="mobile-nav"> 
+                <ul class="navbar-nav ml-auto"> 
+                    <li class="nav-item"> <a href="/" class="nav-link">Home</a> </li> 
+                    <li class="nav-item"> <a href="{{ path('new_article') }}" class="nav-link">Ajouter article</a> </li>
+                    <li class="nav-item"> <a href="{{ path('new_category')}}" class="nav-link">Ajouter catégorie</a> </li>
+                </ul> 
+            </div> 
+        </div> 
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Ajouter un Article</h2>
+                        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                            <div class="form-group">
+                                {{ form_label(form.nom, 'Nom de l\'article', {'label_attr': {'class': 'font-weight-bold'}}) }}
+                                {{ form_widget(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Entrez le nom de l\'article'}}) }}
+                                {{ form_errors(form.nom) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.prix, 'Prix de l\'article', {'label_attr': {'class': 'font-weight-bold'}}) }}
+                                {{ form_widget(form.prix, {'attr': {'class': 'form-control', 'placeholder': 'Entrez le prix de l\'article'}}) }}
+                                {{ form_errors(form.prix) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.category, 'Catégorie', {'label_attr': {'class': 'font-weight-bold'}}) }}
+                                {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.category) }}
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block">Créer</button>
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
